@@ -11,7 +11,6 @@ import UIKit
 class MainTapController : UITabBarController {
   
   
-  
   override func viewDidLoad() {
     super.viewDidLoad()
     configureViewControllers()
@@ -23,9 +22,10 @@ class MainTapController : UITabBarController {
   
   func configureViewControllers(){
     view.backgroundColor = .white
-
     
-    let feed = templetNavigationController(unselectedImage: #imageLiteral(resourceName: "home_unselected"), selectImage: #imageLiteral(resourceName: "home_selected") , rootViewController: FeedController())
+    
+    let layout = UICollectionViewFlowLayout()
+    let feed = templetNavigationController(unselectedImage: #imageLiteral(resourceName: "home_unselected"), selectImage: #imageLiteral(resourceName: "home_selected") , rootViewController: FeedController(collectionViewLayout: layout))
     
     let search = templetNavigationController(unselectedImage: #imageLiteral(resourceName: "search_unselected"), selectImage: #imageLiteral(resourceName: "search_selected") , rootViewController: SearchController())
     

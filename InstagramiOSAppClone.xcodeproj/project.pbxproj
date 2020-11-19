@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		730DCB9225668A88005EB929 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730DCB9125668A88005EB929 /* FeedCell.swift */; };
+		730DCB9525668BE2005EB929 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730DCB9425668BE2005EB929 /* Extension.swift */; };
 		737909BB2562911E006A3842 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737909BA2562911E006A3842 /* AppDelegate.swift */; };
 		737909BD2562911E006A3842 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737909BC2562911E006A3842 /* SceneDelegate.swift */; };
 		737909BF2562911E006A3842 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737909BE2562911E006A3842 /* ViewController.swift */; };
@@ -22,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		730DCB9125668A88005EB929 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
+		730DCB9425668BE2005EB929 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		737909B72562911E006A3842 /* InstagramiOSAppClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstagramiOSAppClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		737909BA2562911E006A3842 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		737909BC2562911E006A3842 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +92,7 @@
 		737909CF25629173006A3842 /* Utilie */ = {
 			isa = PBXGroup;
 			children = (
+				730DCB9425668BE2005EB929 /* Extension.swift */,
 			);
 			path = Utilie;
 			sourceTree = "<group>";
@@ -103,8 +108,8 @@
 			isa = PBXGroup;
 			children = (
 				737909D725629395006A3842 /* MainTapController.swift */,
-				737909DA2562950C006A3842 /* SearchController.swift */,
 				737909DD2562951F006A3842 /* FeedController.swift */,
+				737909DA2562950C006A3842 /* SearchController.swift */,
 				737909E025629538006A3842 /* ImageSelectorController.swift */,
 				737909E32562954B006A3842 /* ProfileController.swift */,
 				737909E92562965D006A3842 /* NotifecationController.swift */,
@@ -129,6 +134,7 @@
 		737909D5256291A7006A3842 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				730DCB9125668A88005EB929 /* FeedCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -204,8 +210,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				737909D825629395006A3842 /* MainTapController.swift in Sources */,
+				730DCB9225668A88005EB929 /* FeedCell.swift in Sources */,
 				737909E125629538006A3842 /* ImageSelectorController.swift in Sources */,
 				737909DE2562951F006A3842 /* FeedController.swift in Sources */,
+				730DCB9525668BE2005EB929 /* Extension.swift in Sources */,
 				737909DB2562950C006A3842 /* SearchController.swift in Sources */,
 				737909EA2562965D006A3842 /* NotifecationController.swift in Sources */,
 				737909BF2562911E006A3842 /* ViewController.swift in Sources */,
