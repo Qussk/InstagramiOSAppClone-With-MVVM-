@@ -35,13 +35,14 @@ class LoginController: UIViewController {
     button.backgroundColor = #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)
     button.layer.cornerRadius = 5
     button.setHeight(50)
-    button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+    button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
     return button
   }()
   
   private let forgotPasswordButton: UIButton = {
     let button = UIButton(type: .system)
     button.attributedTitle(firstPart: "비밀번호를 잊으셨나요? ", secondPart: "비밀번호 찾기")
+    button.addTarget(self, action: #selector(handleShowSingUP), for: .touchUpInside)
     return button
   }()
   
@@ -59,17 +60,21 @@ class LoginController: UIViewController {
    
   }
   
+  //MARK:-  Action
+  
+  @objc func handleShowSingUP(){
+    print("debug: singUP 누름")
+    let controller = RegistrationController()
+    navigationController?.pushViewController(controller, animated: true)
+  }
+  
   
   func setUI(){
+    contigureGradientLayer()
     view.backgroundColor = .white
     navigationController?.navigationBar.isHidden = true
     navigationController?.navigationBar.barStyle = .black
     
-    let gradient = CAGradientLayer()
-    gradient.colors = [UIColor.systemPurple.cgColor, UIColor.systemBlue.cgColor]
-    gradient.locations = [0,1]
-    view.layer.addSublayer(gradient)
-    gradient.frame = view.frame
   
     view.addSubview(iconimage)
     iconimage.centerX(inView: view)

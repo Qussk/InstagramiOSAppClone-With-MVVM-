@@ -6,10 +6,11 @@
 //
 
 import UIKit
-//import JGProgressHUD
 /*
+import JGProgressHUD
+
 extension UIViewController {
-   // static let hud = JGProgressHUD(style: .dark)
+    static let hud = JGProgressHUD(style: .dark)
    
     func configureGradientLayer() {
         let gradient = CAGradientLayer()
@@ -34,8 +35,16 @@ extension UIViewController {
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
+}*/
+extension UIViewController {
+  func contigureGradientLayer(){
+    let gradient = CAGradientLayer()
+    gradient.colors = [UIColor.systemPurple.cgColor, UIColor.systemBlue.cgColor]
+    gradient.locations = [0,1]
+    view.layer.addSublayer(gradient)
+    gradient.frame = view.frame
+  }
 }
-*/
 
 //MARK:- Custom Button
 extension UIButton {
