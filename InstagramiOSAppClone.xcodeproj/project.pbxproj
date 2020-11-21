@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		730DCB9225668A88005EB929 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730DCB9125668A88005EB929 /* FeedCell.swift */; };
 		730DCB9525668BE2005EB929 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730DCB9425668BE2005EB929 /* Extension.swift */; };
+		730DCB99256910E5005EB929 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730DCB98256910E5005EB929 /* LoginController.swift */; };
+		730DCB9C25691119005EB929 /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730DCB9B25691119005EB929 /* RegistrationController.swift */; };
 		737909BB2562911E006A3842 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737909BA2562911E006A3842 /* AppDelegate.swift */; };
 		737909BD2562911E006A3842 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737909BC2562911E006A3842 /* SceneDelegate.swift */; };
 		737909BF2562911E006A3842 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737909BE2562911E006A3842 /* ViewController.swift */; };
@@ -26,6 +28,8 @@
 /* Begin PBXFileReference section */
 		730DCB9125668A88005EB929 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		730DCB9425668BE2005EB929 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		730DCB98256910E5005EB929 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		730DCB9B25691119005EB929 /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		737909B72562911E006A3842 /* InstagramiOSAppClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstagramiOSAppClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		737909BA2562911E006A3842 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		737909BC2562911E006A3842 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,6 +57,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		730DCB97256910BF005EB929 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				730DCB98256910E5005EB929 /* LoginController.swift */,
+				730DCB9B25691119005EB929 /* RegistrationController.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
 		737909AE2562911E006A3842 = {
 			isa = PBXGroup;
 			children = (
@@ -72,6 +85,7 @@
 		737909B92562911E006A3842 /* InstagramiOSAppClone */ = {
 			isa = PBXGroup;
 			children = (
+				730DCB97256910BF005EB929 /* Authentication */,
 				737909D4256291A6006A3842 /* Model */,
 				737909D5256291A7006A3842 /* View */,
 				737909D22562919F006A3842 /* ViewModel */,
@@ -210,6 +224,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				737909D825629395006A3842 /* MainTapController.swift in Sources */,
+				730DCB99256910E5005EB929 /* LoginController.swift in Sources */,
 				730DCB9225668A88005EB929 /* FeedCell.swift in Sources */,
 				737909E125629538006A3842 /* ImageSelectorController.swift in Sources */,
 				737909DE2562951F006A3842 /* FeedController.swift in Sources */,
@@ -220,6 +235,7 @@
 				737909BB2562911E006A3842 /* AppDelegate.swift in Sources */,
 				737909BD2562911E006A3842 /* SceneDelegate.swift in Sources */,
 				737909E42562954B006A3842 /* ProfileController.swift in Sources */,
+				730DCB9C25691119005EB929 /* RegistrationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
