@@ -15,9 +15,12 @@ class RegistrationController: UIViewController {
   //MARK:- life cycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    view.backgroundColor = .brown
+    setUI()
     
   }
+
   
+  func setUI(){
+    contigureGradientLayer()
+  }
 }
