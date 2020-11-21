@@ -16,28 +16,14 @@ class LoginController: UIViewController {
     return iv
   }()
   
-  private let emailTextfield : UITextField = {
-    let tf = UITextField()
-    tf.borderStyle = .none
-    tf.textColor = .white
-    tf.keyboardAppearance = .dark
+  private let emailTextfield : CustomTextField = {
+    let tf = CustomTextField(placeholder: "이메일")
     tf.keyboardType = .emailAddress
-    tf.backgroundColor = UIColor(white: 1, alpha: 0.2)
-    tf.setHeight(50)
-    tf.attributedPlaceholder =
-      NSAttributedString(string: "이메일",attributes: [.foregroundColor: UIColor(white: 1, alpha: 0.7) ])
     return tf
+    
   }()
   private let passwordTextfield : UITextField = {
-    let tf = UITextField()
-    tf.borderStyle = .none
-    tf.textColor = .white
-    tf.keyboardAppearance = .dark
-    tf.keyboardType = .emailAddress
-    tf.backgroundColor = UIColor(white: 1, alpha: 0.2)
-    tf.setHeight(50)
-    tf.attributedPlaceholder =
-      NSAttributedString(string: "비밀번호",attributes: [.foregroundColor: UIColor(white: 1, alpha: 0.7) ])
+    let tf = CustomTextField(placeholder: "비밀번호")
     tf.isSecureTextEntry = true
     return tf
   }()
@@ -55,25 +41,13 @@ class LoginController: UIViewController {
   
   private let forgotPasswordButton: UIButton = {
     let button = UIButton(type: .system)
-    
-    let atts: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor(white: 1, alpha: 0.7), .font: UIFont.systemFont(ofSize: 16)]
-    let attrbutedTitle = NSMutableAttributedString(string: "비밀번호를 잊으셨나요? ", attributes: atts)
-    let boldAtts : [NSAttributedString.Key: Any] = [.foregroundColor: UIColor(white: 1, alpha: 0.7), .font: UIFont.boldSystemFont(ofSize: 16)]
-    attrbutedTitle.append(NSAttributedString(string: "비밀번호 찾기", attributes: boldAtts))
-    button.setAttributedTitle(attrbutedTitle, for: .normal)
-    
+    button.attributedTitle(firstPart: "비밀번호를 잊으셨나요? ", secondPart: "비밀번호 찾기")
     return button
   }()
   
   private let dontHaveAccountButton: UIButton = {
     let button = UIButton(type: .system)
-    
-    let atts: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor(white: 1, alpha: 0.7), .font: UIFont.systemFont(ofSize: 16)]
-    let attrbutedTitle = NSMutableAttributedString(string: "계정이 없으신가요? ", attributes: atts)
-    let boldAtts : [NSAttributedString.Key: Any] = [.foregroundColor: UIColor(white: 1, alpha: 0.7), .font: UIFont.boldSystemFont(ofSize: 16)]
-    attrbutedTitle.append(NSAttributedString(string: "가입하기", attributes: boldAtts))
-    button.setAttributedTitle(attrbutedTitle, for: .normal)
-    
+    button.attributedTitle(firstPart: "계정이 없으신가요 ? ", secondPart: "가입하기")
     return button
   }()
   

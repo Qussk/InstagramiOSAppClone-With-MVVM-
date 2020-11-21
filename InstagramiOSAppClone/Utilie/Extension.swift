@@ -35,7 +35,9 @@ extension UIViewController {
         present(alert, animated: true, completion: nil)
     }
 }
+*/
 
+//MARK:- Custom Button
 extension UIButton {
     func attributedTitle(firstPart: String, secondPart: String) {
         let atts: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor(white: 1, alpha: 0.87), .font: UIFont.systemFont(ofSize: 16)]
@@ -47,8 +49,8 @@ extension UIButton {
         setAttributedTitle(attributedTitle, for: .normal)
     }
 }
-*/
 
+//MARK:- Custom anchor로 레이아웃 잡기
 extension UIView {
     func anchor(top: NSLayoutYAxisAnchor? = nil,
                 left: NSLayoutXAxisAnchor? = nil,
