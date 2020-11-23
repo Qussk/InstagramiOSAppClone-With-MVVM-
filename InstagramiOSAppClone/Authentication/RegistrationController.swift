@@ -11,6 +11,7 @@ class RegistrationController: UIViewController {
   //MARK:-Proreties
   
   private var viewModel = RegisterationViewModel()
+  private var profileImage: UIImage?
   
   private let plusPhotoButton: UIButton = {
     let button = UIButton(type: .system)
@@ -40,10 +41,12 @@ class RegistrationController: UIViewController {
     let button = UIButton()
     button.setTitle("가입하기", for: .normal)
     button.setTitleColor(.white, for: .normal)
-    button.backgroundColor = #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)
+    button.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1).withAlphaComponent(0.5)
     button.layer.cornerRadius = 5
     button.setHeight(50)
     button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+    button.addTarget(self, action: #selector(handleSignUP), for: .touchUpInside)
+    button.isEnabled = false
     return button
   }()
   
@@ -63,6 +66,18 @@ class RegistrationController: UIViewController {
   }
 
   //MARK:- Action
+  @objc func handleSignUP(){
+    guard let email = emailTextfield.text else { return }
+    guard let password = passwordTextfield.text else { return }
+    guard let fullname = fullnameTextfield.text else { return }
+    guard let username = usernameTextfield.text else { return }
+    guard let profileImage = self.profileImage else { return }
+ 
+    let credentials = AuthCredentials(email: email, password: password, fullname: fullname, username: username, profileImage: profileImage)
+    
+    AuthService.registerUser(withCredential: credentials)
+  }
+  
   @objc func handleProfilePhotoSelect(){
     let piker = UIImagePickerController()
     piker.delegate = self
@@ -84,8 +99,8 @@ class RegistrationController: UIViewController {
     }else {
       viewModel.username = sender.text
     }
-    print("debug: ViewModel email : \(viewModel.email!), password : \(viewModel.password!), fullname : \(viewModel.fullname!), username : \(viewModel.username!)")
-    print("debug: ViewModel formIsValid : \(viewModel.formIsValid)")
+  //  print("debug: ViewModel email : \(viewModel.email), password : \(viewModel.password), fullname : \(viewModel.fullname), username : \(viewModel.username)")
+  //  print("debug: ViewModel formIsValid : \(viewModel.formIsValid)")
     updateForm()//FormviewModel
   }
   
@@ -133,11 +148,12 @@ extension RegistrationController: UIImagePickerControllerDelegate, UINavigationC
   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
   
     guard let selectImage = info[.editedImage] as? UIImage else { return }
+    profileImage = selectImage //
+
     plusPhotoButton.layer.cornerRadius = plusPhotoButton.frame.width / 2
     plusPhotoButton.layer.masksToBounds = true
     plusPhotoButton.layer.borderColor = UIColor.white.cgColor
     plusPhotoButton.setImage(selectImage.withRenderingMode(.alwaysOriginal), for: .normal)
-    
     self.dismiss(animated: true, completion: nil)
   }
 }
