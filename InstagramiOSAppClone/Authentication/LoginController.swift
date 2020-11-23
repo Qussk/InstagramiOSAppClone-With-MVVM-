@@ -78,11 +78,7 @@ class LoginController: UIViewController {
     }
     print("debug: ViewModel email : \(viewModel.email), password : \(viewModel.password)")
     print("debug: ViewModel formIsValid : \(viewModel.formIsValid)")
-  
-    //뷰모델에서 가져오기.
-    loginButton.backgroundColor = viewModel.buttonBackgroundColor
-    loginButton.setTitleColor(viewModel.buttonTitleColor, for: .normal)
-    loginButton.isEnabled = viewModel.formIsValid
+    updateForm()//FormviewModel
   }
   
   
@@ -115,4 +111,17 @@ class LoginController: UIViewController {
     emailTextfield.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
     passwordTextfield.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
   }
+}
+
+
+//MARK:- FormviewModel
+extension LoginController: FormviewModel {
+  func updateForm() {
+    //뷰모델에서 가져오기.
+    loginButton.backgroundColor = viewModel.buttonBackgroundColor
+    loginButton.setTitleColor(viewModel.buttonTitleColor, for: .normal)
+    loginButton.isEnabled = viewModel.formIsValid
+  }
+  
+  
 }

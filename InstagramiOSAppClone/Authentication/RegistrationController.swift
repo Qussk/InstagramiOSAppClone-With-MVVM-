@@ -10,6 +10,8 @@ import UIKit
 class RegistrationController: UIViewController {
   //MARK:-Proreties
   
+  private var viewModel = RegisterationViewModel()
+  
   private let plusPhotoButton: UIButton = {
     let button = UIButton(type: .system)
     button.setImage(#imageLiteral(resourceName: "plus_photo"), for: .normal)
@@ -55,6 +57,7 @@ class RegistrationController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     setUI()
+    configureNotificationObservers()
     
   }
 
@@ -62,6 +65,22 @@ class RegistrationController: UIViewController {
   @objc func handleShowLogin(){
     navigationController?.popViewController(animated: true)
   }
+  
+  @objc func textDidChange(sender: UITextField){
+    if sender == emailTextfield {
+      viewModel.email = sender.text
+    }else if sender == passwordTextfield {
+      viewModel.password = sender.text
+    }else if sender == fullnameTextfield {
+      viewModel.fullname = sender.text
+    }else {
+      viewModel.username = sender.text
+    }
+    print("debug: ViewModel email : \(viewModel.email), password : \(viewModel.password), fullname : \(viewModel.fullname), username : \(viewModel.username)")
+    print("debug: ViewModel formIsValid : \(viewModel.formIsValid)")
+    updateForm()//FormviewModel
+  }
+  
   
   func setUI(){
     contigureGradientLayer()
@@ -80,5 +99,22 @@ class RegistrationController: UIViewController {
     view.addSubview(alreadyHaveAccountButton)
     alreadyHaveAccountButton.centerX(inView: view)
     alreadyHaveAccountButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor)
+  }
+  //tf : textDidChange
+  func configureNotificationObservers(){
+    emailTextfield.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+    passwordTextfield.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+    fullnameTextfield.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+    usernameTextfield.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+  }
+  
+}
+
+extension RegistrationController: FormviewModel{
+  func updateForm() {
+    //뷰모델에서 가져오기.
+    SignUpButton.backgroundColor = viewModel.buttonBackgroundColor
+    SignUpButton.setTitleColor(viewModel.buttonTitleColor, for: .normal)
+    SignUpButton.isEnabled = viewModel.formIsValid
   }
 }
