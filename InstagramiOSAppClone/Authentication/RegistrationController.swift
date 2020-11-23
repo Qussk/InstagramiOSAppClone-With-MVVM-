@@ -16,6 +16,7 @@ class RegistrationController: UIViewController {
     let button = UIButton(type: .system)
     button.setImage(#imageLiteral(resourceName: "plus_photo"), for: .normal)
     button.tintColor = .white
+    button.addTarget(self, action: #selector(handleProfilePhotoSelect), for: .touchUpInside)
     return button
   }()
   
@@ -62,6 +63,13 @@ class RegistrationController: UIViewController {
   }
 
   //MARK:- Action
+  @objc func handleProfilePhotoSelect(){
+    let piker = UIImagePickerController()
+    piker.delegate = self
+    piker.allowsEditing = true
+    present(piker, animated: true, completion: nil)
+  }
+  
   @objc func handleShowLogin(){
     navigationController?.popViewController(animated: true)
   }
@@ -76,7 +84,7 @@ class RegistrationController: UIViewController {
     }else {
       viewModel.username = sender.text
     }
-    print("debug: ViewModel email : \(viewModel.email), password : \(viewModel.password), fullname : \(viewModel.fullname), username : \(viewModel.username)")
+    print("debug: ViewModel email : \(viewModel.email!), password : \(viewModel.password!), fullname : \(viewModel.fullname!), username : \(viewModel.username!)")
     print("debug: ViewModel formIsValid : \(viewModel.formIsValid)")
     updateForm()//FormviewModel
   }
@@ -116,5 +124,20 @@ extension RegistrationController: FormviewModel{
     SignUpButton.backgroundColor = viewModel.buttonBackgroundColor
     SignUpButton.setTitleColor(viewModel.buttonTitleColor, for: .normal)
     SignUpButton.isEnabled = viewModel.formIsValid
+  }
+}
+
+//MARK:-UIImagePickerControllerDelegate
+extension RegistrationController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+  
+  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+  
+    guard let selectImage = info[.editedImage] as? UIImage else { return }
+    plusPhotoButton.layer.cornerRadius = plusPhotoButton.frame.width / 2
+    plusPhotoButton.layer.masksToBounds = true
+    plusPhotoButton.layer.borderColor = UIColor.white.cgColor
+    plusPhotoButton.setImage(selectImage.withRenderingMode(.alwaysOriginal), for: .normal)
+    
+    self.dismiss(animated: true, completion: nil)
   }
 }

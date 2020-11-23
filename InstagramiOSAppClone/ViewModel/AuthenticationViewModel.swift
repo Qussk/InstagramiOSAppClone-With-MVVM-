@@ -18,6 +18,7 @@ protocol AuthenticationViewModel {
 }
 
 
+//로그인
 struct LoginViewModel{
   var email: String?
   var password: String?
@@ -39,7 +40,7 @@ struct LoginViewModel{
 
 
 
-//프로토콜 채택
+//회원가입(프로토콜 채택)
 struct RegisterationViewModel: AuthenticationViewModel{
   var email: String?
   var password: String?
