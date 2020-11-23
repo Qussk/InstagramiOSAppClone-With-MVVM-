@@ -10,6 +10,8 @@ import UIKit
 class LoginController: UIViewController {
   //MARK:-Proreties
   
+  private var viewModel = LoginViewModel()
+  
   private let iconimage : UIImageView = {
     let iv = UIImageView(image: #imageLiteral(resourceName: "Instagram_logo_white"))
     iv.contentMode = .scaleAspectFill
@@ -32,7 +34,6 @@ class LoginController: UIViewController {
     let button = UIButton()
     button.setTitle("로그인", for: .normal)
     button.setTitleColor(.white, for: .normal)
-    button.backgroundColor = #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)
     button.layer.cornerRadius = 5
     button.setHeight(50)
     button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
@@ -57,6 +58,7 @@ class LoginController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     setUI()
+    configureNotificationObservers()
    
   }
   
@@ -66,6 +68,21 @@ class LoginController: UIViewController {
     print("debug: singUP 누름")
     let controller = RegistrationController()
     navigationController?.pushViewController(controller, animated: true)
+  }
+  
+  @objc func textDidChange(sender: UITextField){
+    if sender == emailTextfield {
+      viewModel.email = sender.text
+    }else{
+      viewModel.password = sender.text
+    }
+    print("debug: ViewModel email : \(viewModel.email), password : \(viewModel.password)")
+    print("debug: ViewModel formIsValid : \(viewModel.formIsValid)")
+  
+    //뷰모델에서 가져오기.
+    loginButton.backgroundColor = viewModel.buttonBackgroundColor
+    loginButton.setTitleColor(viewModel.buttonTitleColor, for: .normal)
+    loginButton.isEnabled = viewModel.formIsValid
   }
   
   
@@ -91,5 +108,11 @@ class LoginController: UIViewController {
     view.addSubview(dontHaveAccountButton)
     dontHaveAccountButton.centerX(inView: view)
     dontHaveAccountButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor)
+  }
+  
+  //tf : textDidChange
+  func configureNotificationObservers(){
+    emailTextfield.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+    passwordTextfield.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
   }
 }
