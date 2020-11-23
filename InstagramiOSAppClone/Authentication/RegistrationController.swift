@@ -64,19 +64,26 @@ class RegistrationController: UIViewController {
     configureNotificationObservers()
     
   }
-
+  
   //MARK:- Action
   @objc func handleSignUP(){
     guard let email = emailTextfield.text else { return }
     guard let password = passwordTextfield.text else { return }
     guard let fullname = fullnameTextfield.text else { return }
-    guard let username = usernameTextfield.text else { return }
+    guard let username = usernameTextfield.text?.lowercased() else { return }
     guard let profileImage = self.profileImage else { return }
- 
+    
     let credentials = AuthCredentials(email: email, password: password, fullname: fullname, username: username, profileImage: profileImage)
     
-    AuthService.registerUser(withCredential: credentials)
+    AuthService.registerUser(withCredential: credentials) { error in
+      if let error = error {
+        print("DEBUG: 저장할 수 없음\(error.localizedDescription)")
+        return
+      }
+      print("Firestor에 저장 성공")
+    }
   }
+  
   
   @objc func handleProfilePhotoSelect(){
     let piker = UIImagePickerController()
@@ -99,8 +106,8 @@ class RegistrationController: UIViewController {
     }else {
       viewModel.username = sender.text
     }
-  //  print("debug: ViewModel email : \(viewModel.email), password : \(viewModel.password), fullname : \(viewModel.fullname), username : \(viewModel.username)")
-  //  print("debug: ViewModel formIsValid : \(viewModel.formIsValid)")
+    //  print("debug: ViewModel email : \(viewModel.email), password : \(viewModel.password), fullname : \(viewModel.fullname), username : \(viewModel.username)")
+    //  print("debug: ViewModel formIsValid : \(viewModel.formIsValid)")
     updateForm()//FormviewModel
   }
   
@@ -146,10 +153,10 @@ extension RegistrationController: FormviewModel{
 extension RegistrationController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
   
   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-  
+    
     guard let selectImage = info[.editedImage] as? UIImage else { return }
     profileImage = selectImage //
-
+    
     plusPhotoButton.layer.cornerRadius = plusPhotoButton.frame.width / 2
     plusPhotoButton.layer.masksToBounds = true
     plusPhotoButton.layer.borderColor = UIColor.white.cgColor
