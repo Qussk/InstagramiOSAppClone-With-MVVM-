@@ -358,10 +358,12 @@ PODS:
   - nanopb/encode (2.30906.0)
   - PromisesObjC (1.2.11)
   - PryntTrimmerView (4.0.2)
+  - RxSwift (5.1.1)
   - SDWebImage (4.4.8):
     - SDWebImage/Core (= 4.4.8)
   - SDWebImage/Core (4.4.8)
   - SteviaLayout (4.7.3)
+  - SwiftyJSON (5.0.0)
   - YPImagePicker (4.4.0):
     - PryntTrimmerView (~> 4.0.2)
     - SteviaLayout (~> 4.7.3)
@@ -375,7 +377,9 @@ DEPENDENCIES:
   - Firebase/Messaging
   - Firebase/Storage
   - JGProgressHUD (~> 2.0.3)
+  - RxSwift
   - SDWebImage (~> 4.4.2)
+  - SwiftyJSON
   - YPImagePicker
 
 SPEC REPOS:
@@ -405,8 +409,10 @@ SPEC REPOS:
     - nanopb
     - PromisesObjC
     - PryntTrimmerView
+    - RxSwift
     - SDWebImage
     - SteviaLayout
+    - SwiftyJSON
     - YPImagePicker
 
 SPEC CHECKSUMS:
@@ -435,10 +441,12 @@ SPEC CHECKSUMS:
   nanopb: 1bf24dd71191072e120b83dd02d08f3da0d65e53
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
   PryntTrimmerView: 6a43cc90df5d99addeabd33d4ba09b1365322130
+  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   SDWebImage: 783af2c3fa36291a250030c4752ee370a9a51d13
   SteviaLayout: c2ecdcff57d44e38fd2f65e54ad52aeae28ca0c4
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   YPImagePicker: 15aed8bcaa4dad976e11b6114126d731a2f9f3c9
 
-PODFILE CHECKSUM: 4e18debe0fbddf21aa11c015ddbd8324a3633429
+PODFILE CHECKSUM: 3cc99985f0c167d3ffe401165bf4e8f79c377561
 
 COCOAPODS: 1.9.3

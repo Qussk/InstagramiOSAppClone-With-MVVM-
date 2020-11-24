@@ -18,6 +18,7 @@ pod 'SDWebImage','~>4.4.2'
 pod 'JGProgressHUD','~>2.0.3'
 pod 'YPImagePicker'
 
-
+  pod 'RxSwift'
+  pod 'SwiftyJSON'
 
 end

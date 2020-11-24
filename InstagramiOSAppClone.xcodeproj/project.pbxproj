@@ -102,7 +102,6 @@
 		737909B92562911E006A3842 /* InstagramiOSAppClone */ = {
 			isa = PBXGroup;
 			children = (
-				730DCB97256910BF005EB929 /* Authentication */,
 				737909D4256291A6006A3842 /* Model */,
 				737909D5256291A7006A3842 /* View */,
 				737909D22562919F006A3842 /* ViewModel */,
@@ -141,6 +140,7 @@
 		737909D125629180006A3842 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				730DCB97256910BF005EB929 /* Authentication */,
 				737909D725629395006A3842 /* MainTapController.swift */,
 				737909DD2562951F006A3842 /* FeedController.swift */,
 				737909DA2562950C006A3842 /* SearchController.swift */,

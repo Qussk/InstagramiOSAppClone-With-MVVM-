@@ -17,8 +17,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     
       window = UIWindow(windowScene: scene)
-   //   window?.rootViewController = MainTapController()
-      window?.rootViewController = UINavigationController(rootViewController: LoginController())
+      window?.rootViewController = MainTapController()
+    //  window?.rootViewController = UINavigationController(rootViewController: LoginController())
       window?.makeKeyAndVisible()
     }
 
