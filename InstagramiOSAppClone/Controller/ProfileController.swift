@@ -7,12 +7,17 @@
 
 import UIKit
 
-class ProfileController : UIViewController{
+class ProfileController : UICollectionViewController{
     
     override func viewDidLoad() {
       super.viewDidLoad()
-      
-      view.backgroundColor = .purple
+      setUI()
       
     }
+  
+  func setUI(){
+    collectionView.backgroundColor = .white
+
+  }
+  
   }
