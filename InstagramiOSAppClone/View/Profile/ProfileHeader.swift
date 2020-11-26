@@ -6,21 +6,27 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ProfileHeader: UICollectionReusableView {
   
   //MARK:- properties
+  
+  var viewModel: ProfileHeaderViewModel? {
+    didSet { configure() }
+  }
+  
   private let profileImageView: UIImageView = {
     let iv = UIImageView()
-    iv.image = #imageLiteral(resourceName: "venom-7")
     iv.contentMode = .scaleAspectFill
     iv.clipsToBounds = true
+    iv.backgroundColor = .lightGray
     return iv
   }()
   
   private let namelabel: UILabel = {
     let label = UILabel()
-    label.text = "Editing brock"
+    label.contentMode = .center
     label.font = UIFont.boldSystemFont(ofSize: 14)
     return label
   }()
@@ -79,7 +85,7 @@ class ProfileHeader: UICollectionReusableView {
     
   //MARK:- Action
  @objc func handleEditProfileFollowTapped(){
-    
+  print("DEBUG: handleEditProfileFollowTapped")
   }
   
   //MARK:- Helpers
@@ -87,6 +93,14 @@ class ProfileHeader: UICollectionReusableView {
     let attributedText = NSMutableAttributedString(string: "\(value)\n", attributes: [.font: UIFont.boldSystemFont(ofSize: 14)])
     attributedText.append(NSAttributedString(string: label, attributes: [.font: UIFont.systemFont(ofSize: 14), .foregroundColor: UIColor.lightGray]))
     return attributedText
+  }
+  
+  func configure(){
+    guard let viewModel = viewModel else { return }
+    print(viewModel.profileImageUrl)
+
+    namelabel.text = viewModel.fullname
+    profileImageView.sd_setImage(with: viewModel.profileImageUrl)//sd_setImage(with: viewModel.profileImageUrl)
   }
   
   //MARK:- life cycle

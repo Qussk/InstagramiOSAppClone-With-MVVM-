@@ -40,7 +40,6 @@ struct AuthService {
                                   "profileImageURL": imageUrl,
                                   "uid": uid,
                                   "username": credentials.username]
-        
         //컬렉션에 users넣기
         COLLECTION_USERS.document(uid).setData(data, completion: completion)
       }

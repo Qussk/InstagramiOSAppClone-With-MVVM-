@@ -7,6 +7,7 @@
 
 import Foundation
 
+//object user
 struct User {
   let email: String
   let fullname: String
@@ -18,8 +19,7 @@ struct User {
     self.email = dictionaty["email"] as? String ?? ""
     self.fullname = dictionaty["fullname"] as? String ?? ""
     self.username = dictionaty["username"] as? String ?? ""
-    self.profileImageUrl = dictionaty["profileImageUrl"] as? String ?? ""
-    self.profileImageUrl = dictionaty["profileImageUrl"] as? String ?? ""
+    self.profileImageUrl = dictionaty["profileImageURL"] as? String ?? ""
     self.uid = dictionaty["uid"] as? String ?? ""
   }
 }

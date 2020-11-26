@@ -9,14 +9,14 @@ import UIKit
 
 private let cellidentifier = "ProfileCell"
 private let headerIdentifier = "ProfileHeader"
+
 class ProfileController: UICollectionViewController{
     
   //MARK:- properties
   var user: User? {
-    didSet { navigationItem.title = user?.username }
+    didSet { collectionView.reloadData() }
   }
   
-
   override func viewDidLoad() {
       super.viewDidLoad()
       setUI()
@@ -25,8 +25,9 @@ class ProfileController: UICollectionViewController{
   
   //MARK:- API
   func fetchUser(){
-    UserService.fetchUser{ user in
+    UserService.fetchUser { user in
       self.user = user
+      self.navigationItem.title = user.username
     }
   }
  
@@ -50,6 +51,13 @@ extension ProfileController {
   }
   override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
     let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerIdentifier, for: indexPath) as! ProfileHeader
+    print("DEBUG: Did cell Header function")//1
+    
+    if let user = user {
+      header.viewModel = ProfileHeaderViewModel(user: user)
+    }else{
+    print("DEBUG: User not yet set..")//2
+    }
     return header
   }
   
