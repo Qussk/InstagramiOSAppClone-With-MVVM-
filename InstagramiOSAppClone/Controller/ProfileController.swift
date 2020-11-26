@@ -19,7 +19,7 @@ class ProfileController: UICollectionViewController{
  
  //MARK:- Helpers
   func setUI(){
-    collectionView.backgroundColor = .systemPink
+    collectionView.backgroundColor = .white
     collectionView.register(ProfileCell.self, forCellWithReuseIdentifier: cellidentifier)
     collectionView.register(ProfileHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerIdentifier)
    }
