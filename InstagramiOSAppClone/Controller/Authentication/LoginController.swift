@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginController: UIViewController {
   //MARK:-Proreties
@@ -37,6 +38,7 @@ class LoginController: UIViewController {
     button.layer.cornerRadius = 5
     button.setHeight(50)
     button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+    button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
     return button
   }()
   
@@ -63,6 +65,18 @@ class LoginController: UIViewController {
   }
   
   //MARK:-  Action
+  
+  @objc func handleLogin(){
+    guard let email = emailTextfield.text else { return }
+    guard let password = passwordTextfield.text else { return }
+    AuthService.logUserin(whitEamil: email, password: password) { result, error in
+      if let error = error {
+        print("DEBUG: 로그인 실패\(error.localizedDescription)")
+        return
+      }
+      self.dismiss(animated: true, completion: nil)
+    }
+  }
   
   @objc func handleShowSingUP(){
     print("debug: singUP 누름")

@@ -81,6 +81,7 @@ class RegistrationController: UIViewController {
         return
       }
       print("Firestor에 저장 성공")
+      self.dismiss(animated: true, completion: nil)
     }
   }
   

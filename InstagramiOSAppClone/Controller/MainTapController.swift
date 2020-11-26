@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import RxSwift
 
 class MainTapController : UITabBarController {
   
@@ -14,13 +15,13 @@ class MainTapController : UITabBarController {
   override func viewDidLoad() {
     super.viewDidLoad()
     configureViewControllers()
+    checkIfUserISLoggedIn()
   }
    
   //MARK:-API
   
   func checkIfUserISLoggedIn(){
     if Auth.auth().currentUser == nil {
-     
       DispatchQueue.main.async {
         let controller = LoginController()
         let nav = UINavigationController(rootViewController: LoginController())

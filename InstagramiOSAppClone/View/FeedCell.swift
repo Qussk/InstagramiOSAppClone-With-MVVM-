@@ -89,7 +89,6 @@ return iv
   override init(frame: CGRect) {
     super.init(frame: frame)
     
-    backgroundColor = .systemBlue
     addSubview(profilImageView)
     profilImageView.anchor(top: topAnchor, left: leftAnchor, paddingTop: 12, paddingLeft: 12)
     profilImageView.setDimensions(height: 40, width: 40)
