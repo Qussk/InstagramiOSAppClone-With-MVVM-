@@ -41,7 +41,8 @@ class FeedController : UICollectionViewController {
     collectionView.register(FeedCell.self, forCellWithReuseIdentifier: reuseIdentifier)
     
     navigationItem.leftBarButtonItem = UIBarButtonItem(title: "로그아웃", style: .plain, target: self, action: #selector(handlerLogout))
-    navigationController?.title = "피드"
+    navigationItem.title = "피드"
+    
   }
 }
 
