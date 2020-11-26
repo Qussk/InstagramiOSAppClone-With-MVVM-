@@ -41,8 +41,8 @@ struct AuthService {
                                   "uid": uid,
                                   "username": credentials.username]
         
-        //users컬렉션에 넣기
-        Firestore.firestore().collection("users").document(uid).setData(data, completion: completion)
+        //컬렉션에 users넣기
+        COLLECTION_USERS.document(uid).setData(data, completion: completion)
       }
     }
   }

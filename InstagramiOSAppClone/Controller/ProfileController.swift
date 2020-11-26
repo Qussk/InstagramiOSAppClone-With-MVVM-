@@ -11,11 +11,24 @@ private let cellidentifier = "ProfileCell"
 private let headerIdentifier = "ProfileHeader"
 class ProfileController: UICollectionViewController{
     
-    override func viewDidLoad() {
+  //MARK:- properties
+  var user: User? {
+    didSet { navigationItem.title = user?.username }
+  }
+  
+
+  override func viewDidLoad() {
       super.viewDidLoad()
       setUI()
-      
+      fetchUser()
     }
+  
+  //MARK:- API
+  func fetchUser(){
+    UserService.fetchUser{ user in
+      self.user = user
+    }
+  }
  
  //MARK:- Helpers
   func setUI(){
