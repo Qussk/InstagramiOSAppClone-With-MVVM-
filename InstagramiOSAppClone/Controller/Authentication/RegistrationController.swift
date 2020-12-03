@@ -12,6 +12,7 @@ class RegistrationController: UIViewController {
   
   private var viewModel = RegisterationViewModel()
   private var profileImage: UIImage?
+  //weak var delegate : AuthenticationDelegate?
   
   private let plusPhotoButton: UIButton = {
     let button = UIButton(type: .system)
@@ -67,6 +68,7 @@ class RegistrationController: UIViewController {
   
   //MARK:- Action
   @objc func handleSignUP(){
+    print("최종 가입하기 누름")
     guard let email = emailTextfield.text else { return }
     guard let password = passwordTextfield.text else { return }
     guard let fullname = fullnameTextfield.text else { return }
@@ -81,7 +83,8 @@ class RegistrationController: UIViewController {
         return
       }
       print("Firestor에 저장 성공")
-      self.dismiss(animated: true, completion: nil)
+    //  self.delegate?.AuthenticationDidComplete() //섹션 6 - 21
+     self.dismiss(animated: true, completion: nil)
     }
   }
   
@@ -107,8 +110,6 @@ class RegistrationController: UIViewController {
     }else {
       viewModel.username = sender.text
     }
-    //  print("debug: ViewModel email : \(viewModel.email), password : \(viewModel.password), fullname : \(viewModel.fullname), username : \(viewModel.username)")
-    //  print("debug: ViewModel formIsValid : \(viewModel.formIsValid)")
     updateForm()//FormviewModel
   }
   

@@ -88,6 +88,7 @@ class LoginController: UIViewController {
   @objc func handleShowSingUP(){
     print("debug: singUP 누름")
     let controller = RegistrationController()
+  //  controller.delegate = delegate
     navigationController?.pushViewController(controller, animated: true)
   }
   
