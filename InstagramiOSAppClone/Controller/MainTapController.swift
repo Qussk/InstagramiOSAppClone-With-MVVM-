@@ -11,14 +11,26 @@ import RxSwift
 
 class MainTapController : UITabBarController {
   
-  
+  private var user: User?{
+    didSet{
+      guard let user = user else {return}
+      configureViewControllers(withUser: user)
+    }
+  }
   override func viewDidLoad() {
     super.viewDidLoad()
-    configureViewControllers()
     checkIfUserISLoggedIn()
+    fetchUser()
   }
    
   //MARK:-API
+  func fetchUser(){
+    UserService.fetchUser { user in
+      self.user = user
+      self.navigationItem.title = user.username
+    }
+  }
+  
   func checkIfUserISLoggedIn(){
     if Auth.auth().currentUser == nil {
       DispatchQueue.main.async {
@@ -35,7 +47,7 @@ class MainTapController : UITabBarController {
   
   //MARK:- Helper
   
-  func configureViewControllers(){
+  func configureViewControllers(withUser user: User){
     view.backgroundColor = .white
     
     //collectionviewController
@@ -49,8 +61,9 @@ class MainTapController : UITabBarController {
     let notifiCations = templetNavigationController(unselectedImage: #imageLiteral(resourceName: "like_unselected"), selectImage: #imageLiteral(resourceName: "like_selected") , rootViewController: NotifecationController())
     
     //collectionviewController
-    let profileLayout = UICollectionViewFlowLayout()
-    let profiles = templetNavigationController(unselectedImage: #imageLiteral(resourceName: "profile_unselected"), selectImage: #imageLiteral(resourceName: "profile_selected") , rootViewController: ProfileController(collectionViewLayout: profileLayout))
+  //  let profileLayout = UICollectionViewFlowLayout()
+    let profileController = ProfileController(user: user)
+    let profiles = templetNavigationController(unselectedImage: #imageLiteral(resourceName: "profile_unselected"), selectImage: #imageLiteral(resourceName: "profile_selected") , rootViewController: profileController)
     
     viewControllers = [feed, search, imageSelector, notifiCations, profiles]
     tabBar.tintColor = .black
@@ -67,6 +80,7 @@ class MainTapController : UITabBarController {
 
 extension MainTapController: AuthenticationDelegate{
   func AuthenticationDidComplete() {
+    fetchUser()
     self.dismiss(animated: true, completion: nil)
   }
 }
