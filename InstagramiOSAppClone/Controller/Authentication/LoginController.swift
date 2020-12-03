@@ -8,11 +8,16 @@
 import UIKit
 import Firebase
 
+protocol AuthenticationDelegate : class{
+  func AuthenticationDidComplete()
+}
+
 class LoginController: UIViewController {
   //MARK:-Proreties
-  
+    
   private var viewModel = LoginViewModel()
-  
+  weak var delegate : AuthenticationDelegate? //class로 생성하여 weak
+
   private let iconimage : UIImageView = {
     let iv = UIImageView(image: #imageLiteral(resourceName: "Instagram_logo_white"))
     iv.contentMode = .scaleAspectFill
@@ -44,14 +49,14 @@ class LoginController: UIViewController {
   
   private let forgotPasswordButton: UIButton = {
     let button = UIButton(type: .system)
-    button.attributedTitle(firstPart: "비밀번호를 잊으셨나요? ", secondPart: "비밀번호 찾기")
+    button.attributedTitle(firstPart: " 계정이 없으신가요 ? ", secondPart: " 가입하기")
     button.addTarget(self, action: #selector(handleShowSingUP), for: .touchUpInside)
     return button
   }()
   
   private let dontHaveAccountButton: UIButton = {
     let button = UIButton(type: .system)
-    button.attributedTitle(firstPart: "계정이 없으신가요 ? ", secondPart: "가입하기")
+    button.attributedTitle(firstPart: " 비밀번호를 잊으셨나요 ? ", secondPart: " 비밀번호 찾기")
     return button
   }()
   
@@ -71,10 +76,12 @@ class LoginController: UIViewController {
     guard let password = passwordTextfield.text else { return }
     AuthService.logUserin(whitEamil: email, password: password) { result, error in
       if let error = error {
-        print("DEBUG: 로그인 실패\(error.localizedDescription)")
+        print("DEBUG: 로그인 실패 - \(error.localizedDescription)")
         return
       }
-      self.dismiss(animated: true, completion: nil)
+      //성공시, dismiss되며 탭뷰로 이동
+      self.delegate?.AuthenticationDidComplete()
+  //  self.dismiss(animated: true, completion: nil)
     }
   }
   

@@ -100,7 +100,7 @@ class ProfileHeader: UICollectionReusableView {
     print(viewModel.profileImageUrl)
 
     namelabel.text = viewModel.fullname
-    profileImageView.sd_setImage(with: viewModel.profileImageUrl)//sd_setImage(with: viewModel.profileImageUrl)
+    profileImageView.sd_setImage(with: viewModel.profileImageUrl)
   }
   
   //MARK:- life cycle

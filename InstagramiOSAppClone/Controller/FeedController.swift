@@ -23,13 +23,14 @@ class FeedController : UICollectionViewController {
   
   @objc func handlerLogout(){
       do {
-      try Auth.auth().signOut()
+        try Auth.auth().signOut()
         let controller = LoginController()
-        let nav = UINavigationController(rootViewController: LoginController())
+        controller.delegate = self.tabBarController as? MainTapController
+        let nav = UINavigationController(rootViewController: controller)
         nav.modalPresentationStyle = .fullScreen
         self.present(nav, animated: true, completion: nil)
-      }catch {
-        print("DEBUG: failed to sign out")
+        }catch {
+        print("DEBUG: 로그아웃 실패 ")
       }
   }
   

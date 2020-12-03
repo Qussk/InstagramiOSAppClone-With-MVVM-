@@ -19,14 +19,15 @@ class MainTapController : UITabBarController {
   }
    
   //MARK:-API
-  
   func checkIfUserISLoggedIn(){
     if Auth.auth().currentUser == nil {
       DispatchQueue.main.async {
         let controller = LoginController()
-        let nav = UINavigationController(rootViewController: LoginController())
+        controller.delegate = self
+        let nav = UINavigationController(rootViewController: controller)
         nav.modalPresentationStyle = .fullScreen
         self.present(nav, animated: true, completion: nil)
+        print("ssss")
       }
     }
   }
@@ -63,3 +64,10 @@ class MainTapController : UITabBarController {
     return nav
   }
 }
+
+extension MainTapController: AuthenticationDelegate{
+  func AuthenticationDidComplete() {
+    self.dismiss(animated: true, completion: nil)
+  }
+}
+
