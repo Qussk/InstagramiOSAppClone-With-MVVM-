@@ -22,9 +22,7 @@ class ProfileCell: UICollectionViewCell {
   //MARK:- life cycle
   override init(frame: CGRect) {
     super.init(frame: frame)
-    
-    backgroundColor = .green
-    
+        
     addSubview(postImageView)
     postImageView.fillSuperview()//super
   }
